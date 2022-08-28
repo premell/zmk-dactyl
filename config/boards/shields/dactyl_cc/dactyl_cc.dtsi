@@ -46,5 +46,6 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)                              RC(2,9) RC(
             , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 from the schematic file
             , <&gpio1 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 from the schematic file
             , <&gpio1 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 4 from the schematic file
+            ;
     };
 };
