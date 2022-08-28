@@ -31,7 +31,7 @@
     &kp A     &kp S    &kp D     &kp F     &kp G                              &kp H     &kp J     &kp K     &kp L     &kp SEMI
     &kp Z     &kp X    &kp C     &kp V     &kp B                              &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH 
               &kp LBKT  &kp RBKT                                                                  &kp LBKT  &kp RBKT
-                                            &kp LCTRL &kp LALT  &kp LGUI    &kp DEL   &kp RET   &kp SPACE
+                                &kp LCTRL &kp LALT  &kp LGUI    &kp DEL   &kp RET   &kp SPACE
                                             &kp LCTRL &kp LALT  &kp LGUI    &kp DEL   &kp RET   &kp SPACE
             >;
         };
