@@ -7,13 +7,6 @@ if SHIELD_DACTYL_CC_LEFT
         default y
 endif
 
-if SHIELD_DACTYL_CC_RIGHT
-
-    config ZMK_KEYBOARD_NAME
-        default "Dactyl CC Right"
-
-endif
-
 if SHIELD_DACTYL_CC_LEFT || SHIELD_DACTYL_CC_RIGHT
 
     config ZMK_SPLIT
