@@ -5,7 +5,7 @@
 # the `include` property, e.g:
 #
 board: [ "nice_nano_v2" ]
-shield: [ "dactyl_cc_left", "dactyl_cc_right", "settings_reset"]
+shield: [ "dactyl_cc_left", "dactyl_cc_right"]
   # - board: bdn9_rev2
   # - board: nice_nano_v2
   #   shield: reviung41
