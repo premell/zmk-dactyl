@@ -27,7 +27,7 @@
 
         default_layer {
             bindings = <
-    &kp LCTRL     &kp g    &kp m     &kp p     &kp v                              &kp Y     &kp j     &kp k     &kp O     &kp P    
+    &kp LCTRL     &kp g    &kp m     &kp P     &kp v                              &kp Y     &kp j     &kp k     &kp O     &kp P    
     &kp r     &kp s    &kp n     &kp d     &kp b                              &kp H     &kp a     &kp e     &kp i     &kp h
     &kp x     &kp f    &kp l     &kp c     &kp w                              &kp N     &kp u     &kp o     &kp y     &kp LCTRL
               &kp LBKT  &kp RBKT                                                                  &kp LBKT  &kp RBKT
