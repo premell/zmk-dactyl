@@ -86,11 +86,8 @@
                 , <&macro_tap &kp G>
                 , <&macro_release &kp LSHFT>
                 ;
-        };
     };
-};
 
-/ {
     combos {
         compatible = "zmk,combos";
         combo_q {
@@ -130,7 +127,6 @@
         };
        
     };
-};
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -152,8 +148,6 @@
         };
     };
 
-
-/ {
     keymap {
         compatible = "zmk,keymap";
 
