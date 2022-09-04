@@ -12,7 +12,7 @@
 #define SYM_L 1
 #define NAV_L 2
 #define NAV2_L 3
-#define OTHER_L 4
+//#define OTHER_L 4
 
 // Desktop and tab navigation shortcuts
 #define DESKTOP_LT   LC(LG(LEFT))
