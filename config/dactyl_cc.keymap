@@ -86,6 +86,7 @@
                 , <&macro_tap &kp G>
                 , <&macro_release &kp LSHFT>
                 ;
+      };
     };
 
     combos {
@@ -125,7 +126,6 @@
             key-positions = <18 19>;
             bindings = <&kp ESCAPE>;
         };
-       
     };
 
     conditional_layers {
