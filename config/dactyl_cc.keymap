@@ -3,23 +3,155 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define DEFAULT 0
-#define MAC     1
-#define LOWER   2
-#define RAISE   3
-#define ADJUST  4
+// #############      SWEDISH COMPATIBLE SPECIAL CHARACTERS        #################
+#define SE_AA LEFT_BRACKET
+#define SE_AE SQT
+#define SE_OE SEMICOLON
 
-#define HYPER(key) LS(LC(LA(LG(key))))
-#define MEH(key)   LS(LC(LA(key)))
+// #############      LAYERS        #################
+#define SYM_L 1
+#define NAV_L 2
+#define NAV2_L 3
+#define OTHER_L 4
 
-&sl {
-    release-after-ms = <5000>;
+// Desktop and tab navigation shortcuts
+#define DESKTOP_LT   LC(LG(LEFT))
+#define DESKTOP_RT   LC(LG(RIGHT))
+#define WINDOW_LT    LA(LS(TAB))
+#define WINDOW_RT    LA(TAB)
+#define TAB_LT       LC(LS(TAB))
+#define TAB_RT       LC(TAB)
+
+// Generic bindings
+#define KILL_WINDOW  LA(F4)
+#define MAXIMIZE  LG(UP)
+#define MINIMIZE  LG(DOWN)
+
+// Linux specific navigation 
+#define DESKTOP_PREV   LG(ESC)
+#define DESKTOP_SPEC   LG(O)
+
+#define WINDOW_1   LG(NUMBER_1)
+#define WINDOW_2   LG(NUMBER_2)
+#define WINDOW_3   LG(NUMBER_3)
+#define WINDOW_4   LG(NUMBER_4)
+#define WINDOW_5   LG(NUMBER_5)
+#define WINDOW_6   LG(NUMBER_6)
+#define WINDOW_7   LG(NUMBER_7)
+#define WINDOW_8   LG(NUMBER_8)
+#define WINDOW_9   LG(NUMBER_9)
+
+#define SEND_W_TO_1   LG(LS(NUMBER_1))
+#define SEND_W_TO_2   LG(LS(NUMBER_2))
+#define SEND_W_TO_3   LG(LS(NUMBER_3))
+#define SEND_W_TO_4   LG(LS(NUMBER_4))
+#define SEND_W_TO_5   LG(LS(NUMBER_5))
+#define SEND_W_TO_6   LG(LS(NUMBER_6))
+#define SEND_W_TO_7   LG(LS(NUMBER_7))
+#define SEND_W_TO_8   LG(LS(NUMBER_8))
+#define SEND_W_TO_9   LG(LS(NUMBER_9))
+
+#define ROT_LAYOUT          LG(SPACE)
+#define TOGGLE_FLOATING     LG(LC(SPACE))
+#define MOVE_TO_MASTER      LG(LC(RET))
+#define ROTATE_WINDOW_LT    LG(LS(J))
+#define ROTATE_WINDOW_RT    LG(LS(K))
+
+#define UN_MINIMIZE     LG(LC(N))
+
+#define SHRINK_WIDTH    LG(LA(H))
+#define EXPAND_WIDTH    LG(LA(L))
+#define INC_COL         LG(LC(H))
+#define DEC_COL         LG(LC(L))
+#define INC_MASTER      LG(LS(H))
+#define DEC_MASTER      LG(LS(L))
+
+&mt {
+    tapping-term-ms = <500>;
 };
 
-&kscan0 {
-    debounce-press-ms = <30>;
-    debounce-release-ms = <30>;
+
+ &sl {
+     release-after-ms = <2000>;
+ };
+
+/ {
+    macros {
+        uppercase_G: uppercase_G {
+            label = "uppercase_G";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp G>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+    };
 };
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_q {
+            timeout-ms = <50>;
+            key-positions = <5 6>;
+            bindings = <&kp Z>;
+        };
+        combo_z {
+            timeout-ms = <50>;
+            key-positions = <5 7>;
+            bindings = <&kp Z>;
+        };
+        combo_aa { #keyevent 219
+            timeout-ms = <50>;
+            key-positions = <6 9>;
+            bindings = <&kp SE_AA>;
+        };
+        combo_ae { #keyevent 222
+            timeout-ms = <50>;
+            key-positions = <7 9>;
+            bindings = <&kp SE_AE>;
+        };
+        combo_oe { #keyevent 59
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp SE_OE>;
+        };
+        combo_return {
+            timeout-ms = <50>;
+            key-positions = <17 18>;
+            bindings = <&kp RETURN>;
+        };
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <18 19>;
+            bindings = <&kp ESCAPE>;
+        };
+       
+    };
+};
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <4>;
+        };
+    };
+
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
 
 / {
     keymap {
@@ -27,14 +159,62 @@
 
         default_layer {
             bindings = <
-    &kp R     &kp G    &kp M     &kp P     &kp V                              &kp Y     &kp J     &kp K     &kp O     &kp P    
-    &kp R     &kp S    &kp N     &kp D     &kp B                              &kp H     &kp A     &kp E     &kp I     &kp H
-    &kp X     &kp F    &kp L     &kp C     &kp W                              &kp N     &kp U     &kp O     &kp Y     &kp LCTRL
-              &kp LBKT  &kp RBKT                                                                  &kp LBKT  &kp RBKT
-                      &kp LCTRL   &kp T       &kp LGUI                  &kp DEL   &kp SPACE   &kp SPACE
+    &hm QUESTION EXCLAMATION     &kp G    &kp M     &kp P     &kp V                                &hm SQT DQT                          &kp J     &kp K     &hm SEMICOLON COLON     &hm SLASH  BACKSLASH   
+    &hm LCTRL R     &hm LSHIFT S    &hm LGUI N     &hm LALT D     &kp B                              &hm PLUS EQUAL     &hm LALT A     &hm LGUI E     &hm LSHIFT I     &hm LCTRL H
+    &kp X     &kp F    &kp L     &kp C     &kp W                                                    &hm MINUS UNDERSCORE     &kp U     &kp O     &kp Y    &hm COMMA PERIOD 
+              &hm  LT LEFT_BRACE &hm  GT RIGHT_BRACE                                                                 &hm LEFT_BRACKET LEFT_PARENTHESIS &hm RIGHT_BRACKET RIGHT_PARENTHESIS 
+                      &sl NAV_L   &kp T       &none                  &kp DEL   &kp SPACE    &sl SYM_L 
                       &kp TAB &kp LEFT_ARROW  &kp DOWN_ARROW        &kp UP_ARROW   &kp RIGHT_ARROW   &kp BACKSPACE
+            >;
+        };
+
+sym_layer {
+            bindings = <
+               &kp GRAVE     &kp TILDE2       &kp PIPE     &kp CARET      &kp HASH     &kp STAR             &kp AMPS      &kp PERCENT     &kp DOLLAR     &kp AT_SIGN 
+    &kp NUMBER_1     &kp NUMBER_2    &kp NUMBER_3     &kp NUMBER_4     &none                              &none     &kp NUMBER_7     &kp NUMBER_8     &kp NUMBER_9     &kp NUMBER_0
+    &none      &kp Y          &kp D                    &kp NUMBER_5     &none                              &none     &kp NUMBER_6     &kp J     &kp K     &kp uppercase_G
+                      &none &none                                                                       &none    &none
+                      &none   &none   &none                  &trans   &trans   &none
+                      &trans   &trans   &trans                  &trans   &trans   &trans
+            >;
+        };
+
+
+        nav_layer {
+            bindings = <
+                &kp WINDOW_1        &kp WINDOW_2        &kp WINDOW_3       &kp WINDOW_4          &kp WINDOW_5                                     &kp WINDOW_6     &kp WINDOW_7     &kp WINDOW_8     &kp WINDOW_9          &none
+                &kp DESKTOP_SPEC     &kp DESKTOP_PREV     &kp DESKTOP_LT      &kp DESKTOP_RT         &kp ROT_LAYOUT                                &kp KILL_WINDOW   &kp ROTATE_WINDOW_LT       &kp ROTATE_WINDOW_RT   &kp MOVE_TO_MASTER       &none
+                &kp TAB_LT     &kp TAB_RT     &kp WINDOW_LT       &kp WINDOW_RT      &kp TOGGLE_FLOATING                                          &kp MAXIMIZE       &kp MINIMIZE        &kp UN_MINIMIZE    &kp SHRINK_WIDTH     &kp EXPAND_WIDTH
+                      &none &none                                                                       &none    &none
+                                                  &sl NAV_L     &none     &none         &none     &none        &sl SYM_L
+                      &none   &none   &none                 &none   &none   &none 
+
+
+            >;
+        };
+
+        nav2_layer {
+            bindings = <
+                &kp SEND_W_TO_1        &kp SEND_W_TO_2        &kp SEND_W_TO_3       &kp SEND_W_TO_4          &kp SEND_W_TO_5       &kp SEND_W_TO_6     &kp SEND_W_TO_7     &kp SEND_W_TO_8     &kp SEND_W_TO_9          &none
+                &none   &none   &none   &none      &none                   &kp F1  &kp F2 &kp F3  &kp F4  &kp F5 
+                &none   &none   &none   &none                 &none                       &kp F6 &kp F7 &kp F8  &kp F9  &kp F10 
+                                                        &none     &none       &kp F11  &kp F12
+                                                &none   &none   &none                 &none   &none   &none 
+                                                &none   &none   &none                 &none   &none   &none 
+                
             >;
         };
     };
 };
 
+
+   
+   
+        //other_layer {
+           // bindings = <
+             //   &none     &none     &none      &none          &none       &none           &kp C_PREV         &kp C_PLAY_PAUSE      &kp C_NEXT     &none
+               // &none     &none     &none      &none  &none     &kp C_MUTE           &kp C_VOLUME_DOWN         &kp   C_VOLUME_UP    &none     &none
+ //               &none     &none     &none      &none          &none       &none           &none       &kp  C_BRIGHTNESS_DEC     &kp    C_BRIGHTNESS_INC  &none
+   //                                               &none          &none       &none           &none
+     //       >;
+       // };
