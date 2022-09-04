@@ -118,12 +118,12 @@
         };
         combo_return {
             timeout-ms = <50>;
-            key-positions = <17 18>;
+            key-positions = <16 17>;
             bindings = <&kp RETURN>;
         };
         combo_esc {
             timeout-ms = <50>;
-            key-positions = <18 19>;
+            key-positions = <17 18>;
             bindings = <&kp ESCAPE>;
         };
     };
@@ -153,7 +153,7 @@
 
         default_layer {
             bindings = <
-    &hm QUESTION EXCLAMATION     &kp G    &kp M     &kp P     &kp V                                &hm SQT DQT                          &kp J     &kp K     &hm SEMICOLON COLON     &hm SLASH  BACKSLASH   
+    &hm QUESTION EXCLAMATION     &kp G    &kp M     &kp P     &kp V                                &hm SQT DQT                          &kp J     &kp K     &hm SEMICOLON COLON     &hm BACKSLASH SLASH     
     &hm LCTRL R     &hm LSHIFT S    &hm LGUI N     &hm LALT D     &kp B                              &hm PLUS EQUAL     &hm LALT A     &hm LGUI E     &hm LSHIFT I     &hm LCTRL H
     &kp X     &kp F    &kp L     &kp C     &kp W                                                    &hm MINUS UNDERSCORE     &kp U     &kp O     &kp Y    &hm COMMA PERIOD 
               &hm  LT LEFT_BRACE &hm  GT RIGHT_BRACE                                                                 &hm LEFT_BRACKET LEFT_PARENTHESIS &hm RIGHT_BRACKET RIGHT_PARENTHESIS 
