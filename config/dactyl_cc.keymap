@@ -94,7 +94,7 @@
         combo_q {
             timeout-ms = <50>;
             key-positions = <5 6>;
-            bindings = <&kp Z>;
+            bindings = <&kp Q>;
         };
         combo_z {
             timeout-ms = <50>;
