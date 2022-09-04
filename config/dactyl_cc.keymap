@@ -103,17 +103,17 @@
             key-positions = <5 7>;
             bindings = <&kp Z>;
         };
-        combo_aa { #keyevent 219
+        combo_aa {
             timeout-ms = <50>;
             key-positions = <6 9>;
             bindings = <&kp SE_AA>;
         };
-        combo_ae { #keyevent 222
+        combo_ae {
             timeout-ms = <50>;
             key-positions = <7 9>;
             bindings = <&kp SE_AE>;
         };
-        combo_oe { #keyevent 59
+        combo_oe {
             timeout-ms = <50>;
             key-positions = <8 9>;
             bindings = <&kp SE_OE>;
